@@ -149,9 +149,25 @@ public class EtriageFrame extends javax.swing.JFrame implements EtriageListener 
         jTextFieldEtbLocation = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTextFieldIntervalTemp1 = new javax.swing.JTextField();
-        jButtonReadIntervalTemp1 = new javax.swing.JButton();
-        jButtonWriteIntervalTemp1 = new javax.swing.JButton();
+        jTextFieldEtbDateTime = new javax.swing.JTextField();
+        jButtonReadEtbDateTime = new javax.swing.JButton();
+        jButtonWriteEtbDateTime = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        jTextFieldEtbPosition = new javax.swing.JTextField();
+        jButtonReadEtbPosition = new javax.swing.JButton();
+        jButtonWriteEtbPositon = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        jTextFieldEtbTriageLevel = new javax.swing.JTextField();
+        jButtonReadEtbTriageLevel = new javax.swing.JButton();
+        jButtonWriteEtbTriageLevel = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        jTextFieldEtbLocationID = new javax.swing.JTextField();
+        jButtonReadLocationID = new javax.swing.JButton();
+        jButtonWriteLocationID = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        jTextFieldConnectionInterval = new javax.swing.JTextField();
+        jButtonReadConnetionInterval = new javax.swing.JButton();
+        jButtonWriteConnectionInterval = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jProgressBarValueTemp = new javax.swing.JProgressBar();
         jButtonGraphTemp = new javax.swing.JButton();
@@ -201,7 +217,7 @@ public class EtriageFrame extends javax.swing.JFrame implements EtriageListener 
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButtonConnection)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonLog)
@@ -417,26 +433,118 @@ public class EtriageFrame extends javax.swing.JFrame implements EtriageListener 
 
         jLabel4.setText("etb Location");
 
-        jLabel5.setText("Date Time");
+        jLabel5.setText("etb Date Time");
 
-        jTextFieldIntervalTemp1.setText("0");
-        jTextFieldIntervalTemp1.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldEtbDateTime.setText("0");
+        jTextFieldEtbDateTime.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldIntervalTemp1ActionPerformed(evt);
+                jTextFieldEtbDateTimeActionPerformed(evt);
             }
         });
 
-        jButtonReadIntervalTemp1.setText("Read");
-        jButtonReadIntervalTemp1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonReadEtbDateTime.setText("Read");
+        jButtonReadEtbDateTime.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonReadIntervalTemp1ActionPerformed(evt);
+                jButtonReadEtbDateTimeActionPerformed(evt);
             }
         });
 
-        jButtonWriteIntervalTemp1.setText("Write");
-        jButtonWriteIntervalTemp1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonWriteEtbDateTime.setText("Write");
+        jButtonWriteEtbDateTime.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonWriteIntervalTemp1ActionPerformed(evt);
+                jButtonWriteEtbDateTimeActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setText("etb Position");
+
+        jTextFieldEtbPosition.setText("0");
+        jTextFieldEtbPosition.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldEtbPositionActionPerformed(evt);
+            }
+        });
+
+        jButtonReadEtbPosition.setText("Read");
+        jButtonReadEtbPosition.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonReadEtbPositionActionPerformed(evt);
+            }
+        });
+
+        jButtonWriteEtbPositon.setText("Write");
+        jButtonWriteEtbPositon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonWriteEtbPositonActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setText("etb Triage level");
+
+        jTextFieldEtbTriageLevel.setText("0");
+        jTextFieldEtbTriageLevel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldEtbTriageLevelActionPerformed(evt);
+            }
+        });
+
+        jButtonReadEtbTriageLevel.setText("Read");
+        jButtonReadEtbTriageLevel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonReadEtbTriageLevelActionPerformed(evt);
+            }
+        });
+
+        jButtonWriteEtbTriageLevel.setText("Write");
+        jButtonWriteEtbTriageLevel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonWriteEtbTriageLevelActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setText("etb Loation ID");
+
+        jTextFieldEtbLocationID.setText("0");
+        jTextFieldEtbLocationID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldEtbLocationIDActionPerformed(evt);
+            }
+        });
+
+        jButtonReadLocationID.setText("Read");
+        jButtonReadLocationID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonReadLocationIDActionPerformed(evt);
+            }
+        });
+
+        jButtonWriteLocationID.setText("Write");
+        jButtonWriteLocationID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonWriteLocationIDActionPerformed(evt);
+            }
+        });
+
+        jLabel9.setText("Connection Interval");
+
+        jTextFieldConnectionInterval.setText("0");
+        jTextFieldConnectionInterval.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldConnectionIntervalActionPerformed(evt);
+            }
+        });
+
+        jButtonReadConnetionInterval.setText("Read");
+        jButtonReadConnetionInterval.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonReadConnetionIntervalActionPerformed(evt);
+            }
+        });
+
+        jButtonWriteConnectionInterval.setText("Write");
+        jButtonWriteConnectionInterval.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonWriteConnectionIntervalActionPerformed(evt);
             }
         });
 
@@ -445,55 +553,120 @@ public class EtriageFrame extends javax.swing.JFrame implements EtriageListener 
         jPanel19Layout.setHorizontalGroup(
             jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel19Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextFieldIntervalTemp, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButtonReadIntervalTemp)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonWriteIntervalTemp))
-            .addGroup(jPanel19Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jTextFieldEtbLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButtonReadEtbLocation)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonWriteEtbLocation))
-            .addGroup(jPanel19Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextFieldIntervalTemp1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButtonReadIntervalTemp1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonWriteIntervalTemp1))
+                .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel19Layout.createSequentialGroup()
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButtonReadEtbPosition)
+                            .addComponent(jButtonReadEtbDateTime))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButtonWriteEtbPositon)
+                            .addComponent(jButtonWriteEtbDateTime)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel19Layout.createSequentialGroup()
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextFieldEtbLocation)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonReadEtbLocation)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonWriteEtbLocation))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel19Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel19Layout.createSequentialGroup()
+                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextFieldEtbTriageLevel, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButtonReadEtbTriageLevel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButtonWriteEtbTriageLevel))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel19Layout.createSequentialGroup()
+                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextFieldEtbLocationID, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButtonReadLocationID)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButtonWriteLocationID))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel19Layout.createSequentialGroup()
+                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextFieldConnectionInterval, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButtonReadConnetionInterval)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButtonWriteConnectionInterval))))
+                    .addGroup(jPanel19Layout.createSequentialGroup()
+                        .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel19Layout.createSequentialGroup()
+                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextFieldEtbPosition, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel19Layout.createSequentialGroup()
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel19Layout.createSequentialGroup()
+                                        .addComponent(jTextFieldIntervalTemp, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jButtonReadIntervalTemp)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jButtonWriteIntervalTemp))
+                                    .addComponent(jTextFieldEtbDateTime, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel19Layout.setVerticalGroup(
             jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel19Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButtonReadIntervalTemp)
+                    .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButtonReadIntervalTemp)
+                        .addComponent(jButtonWriteIntervalTemp))
                     .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextFieldIntervalTemp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButtonWriteIntervalTemp)))
+                        .addComponent(jTextFieldIntervalTemp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextFieldIntervalTemp1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonReadIntervalTemp1)
-                    .addComponent(jButtonWriteIntervalTemp1))
-                .addGap(46, 46, 46)
+                    .addComponent(jTextFieldEtbDateTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonReadEtbDateTime)
+                    .addComponent(jButtonWriteEtbDateTime))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTextFieldEtbPosition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonReadEtbPosition)
+                    .addComponent(jButtonWriteEtbPositon))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonWriteEtbTriageLevel)
+                    .addComponent(jButtonReadEtbTriageLevel)
+                    .addComponent(jTextFieldEtbTriageLevel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(7, 7, 7)
                 .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonWriteEtbLocation)
                     .addComponent(jButtonReadEtbLocation)
                     .addComponent(jTextFieldEtbLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTextFieldEtbLocationID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonReadLocationID)
+                    .addComponent(jButtonWriteLocationID))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTextFieldConnectionInterval, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonReadConnetionInterval)
+                    .addComponent(jButtonWriteConnectionInterval))
+                .addContainerGap())
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Skin Temperature"));
@@ -549,33 +722,32 @@ public class EtriageFrame extends javax.swing.JFrame implements EtriageListener 
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 6, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(268, 268, 268))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jPanel17, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel18, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -613,14 +785,6 @@ public class EtriageFrame extends javax.swing.JFrame implements EtriageListener 
             //jTextFieldStatus.setText("Not Connected.");
         }
     }//GEN-LAST:event_jButtonConnectionActionPerformed
-
-    private void jButtonReadIntervalTempActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReadIntervalTempActionPerformed
-        if (traale != null) traale.readSkinTemperatureInterval();
-    }//GEN-LAST:event_jButtonReadIntervalTempActionPerformed
-
-    private void jButtonWriteIntervalTempActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonWriteIntervalTempActionPerformed
-        if (traale != null) traale.setSkinTemperatureInterval(Integer.parseInt(jTextFieldIntervalTemp.getText()));
-    }//GEN-LAST:event_jButtonWriteIntervalTempActionPerformed
 
     private void jCheckBoxSubscribeTempActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxSubscribeTempActionPerformed
         if (traale != null) {
@@ -710,33 +874,89 @@ public class EtriageFrame extends javax.swing.JFrame implements EtriageListener 
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldInfoFWActionPerformed
 
-    private void jButtonWriteEtbLocationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonWriteEtbLocationActionPerformed
-        if (traale != null) traale.setetbLocation(Integer.parseInt(jTextFieldEtbLocation.getText()));
-    }//GEN-LAST:event_jButtonWriteEtbLocationActionPerformed
+    private void jButtonWriteEtbDateTimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonWriteEtbDateTimeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonWriteEtbDateTimeActionPerformed
 
-    private void jButtonReadEtbLocationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReadEtbLocationActionPerformed
-        if (traale != null) traale.readetbLocation();
-    }//GEN-LAST:event_jButtonReadEtbLocationActionPerformed
+    private void jButtonReadEtbDateTimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReadEtbDateTimeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonReadEtbDateTimeActionPerformed
+
+    private void jTextFieldEtbDateTimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldEtbDateTimeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldEtbDateTimeActionPerformed
 
     private void jTextFieldEtbLocationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldEtbLocationActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldEtbLocationActionPerformed
 
+    private void jButtonReadEtbLocationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReadEtbLocationActionPerformed
+        if (traale != null) traale.readetbLocation();
+    }//GEN-LAST:event_jButtonReadEtbLocationActionPerformed
+
+    private void jButtonWriteEtbLocationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonWriteEtbLocationActionPerformed
+        if (traale != null) traale.setetbLocation(Integer.parseInt(jTextFieldEtbLocation.getText()));
+    }//GEN-LAST:event_jButtonWriteEtbLocationActionPerformed
+
+    private void jButtonWriteIntervalTempActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonWriteIntervalTempActionPerformed
+        if (traale != null) traale.setSkinTemperatureInterval(Integer.parseInt(jTextFieldIntervalTemp.getText()));
+    }//GEN-LAST:event_jButtonWriteIntervalTempActionPerformed
+
+    private void jButtonReadIntervalTempActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReadIntervalTempActionPerformed
+        if (traale != null) traale.readSkinTemperatureInterval();
+    }//GEN-LAST:event_jButtonReadIntervalTempActionPerformed
+
     private void jTextFieldIntervalTempActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldIntervalTempActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldIntervalTempActionPerformed
 
-    private void jTextFieldIntervalTemp1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldIntervalTemp1ActionPerformed
+    private void jTextFieldEtbPositionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldEtbPositionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldIntervalTemp1ActionPerformed
+    }//GEN-LAST:event_jTextFieldEtbPositionActionPerformed
 
-    private void jButtonReadIntervalTemp1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReadIntervalTemp1ActionPerformed
+    private void jButtonReadEtbPositionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReadEtbPositionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonReadIntervalTemp1ActionPerformed
+    }//GEN-LAST:event_jButtonReadEtbPositionActionPerformed
 
-    private void jButtonWriteIntervalTemp1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonWriteIntervalTemp1ActionPerformed
+    private void jButtonWriteEtbPositonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonWriteEtbPositonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonWriteIntervalTemp1ActionPerformed
+    }//GEN-LAST:event_jButtonWriteEtbPositonActionPerformed
+
+    private void jTextFieldEtbTriageLevelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldEtbTriageLevelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldEtbTriageLevelActionPerformed
+
+    private void jButtonReadEtbTriageLevelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReadEtbTriageLevelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonReadEtbTriageLevelActionPerformed
+
+    private void jButtonWriteEtbTriageLevelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonWriteEtbTriageLevelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonWriteEtbTriageLevelActionPerformed
+
+    private void jTextFieldEtbLocationIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldEtbLocationIDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldEtbLocationIDActionPerformed
+
+    private void jButtonReadLocationIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReadLocationIDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonReadLocationIDActionPerformed
+
+    private void jButtonWriteLocationIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonWriteLocationIDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonWriteLocationIDActionPerformed
+
+    private void jTextFieldConnectionIntervalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldConnectionIntervalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldConnectionIntervalActionPerformed
+
+    private void jButtonReadConnetionIntervalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReadConnetionIntervalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonReadConnetionIntervalActionPerformed
+
+    private void jButtonWriteConnectionIntervalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonWriteConnectionIntervalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonWriteConnectionIntervalActionPerformed
     
     /**
      * @param args the command line arguments
@@ -764,13 +984,21 @@ public class EtriageFrame extends javax.swing.JFrame implements EtriageListener 
     private javax.swing.JButton jButtonConnection;
     private javax.swing.JButton jButtonGraphTemp;
     private javax.swing.JButton jButtonLog;
+    private javax.swing.JButton jButtonReadConnetionInterval;
+    private javax.swing.JButton jButtonReadEtbDateTime;
     private javax.swing.JButton jButtonReadEtbLocation;
+    private javax.swing.JButton jButtonReadEtbPosition;
+    private javax.swing.JButton jButtonReadEtbTriageLevel;
     private javax.swing.JButton jButtonReadIntervalTemp;
-    private javax.swing.JButton jButtonReadIntervalTemp1;
+    private javax.swing.JButton jButtonReadLocationID;
     private javax.swing.JButton jButtonReqInfo;
+    private javax.swing.JButton jButtonWriteConnectionInterval;
+    private javax.swing.JButton jButtonWriteEtbDateTime;
     private javax.swing.JButton jButtonWriteEtbLocation;
+    private javax.swing.JButton jButtonWriteEtbPositon;
+    private javax.swing.JButton jButtonWriteEtbTriageLevel;
     private javax.swing.JButton jButtonWriteIntervalTemp;
-    private javax.swing.JButton jButtonWriteIntervalTemp1;
+    private javax.swing.JButton jButtonWriteLocationID;
     private javax.swing.JCheckBox jCheckBoxBWTest;
     private javax.swing.JCheckBox jCheckBoxSubscribeBatt;
     private javax.swing.JCheckBox jCheckBoxSubscribeTemp;
@@ -782,6 +1010,10 @@ public class EtriageFrame extends javax.swing.JFrame implements EtriageListener 
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel17;
     private javax.swing.JPanel jPanel18;
@@ -790,14 +1022,18 @@ public class EtriageFrame extends javax.swing.JFrame implements EtriageListener 
     private javax.swing.JPanel jPanel4;
     private javax.swing.JProgressBar jProgressBarBatt;
     private javax.swing.JProgressBar jProgressBarValueTemp;
+    private javax.swing.JTextField jTextFieldConnectionInterval;
+    private javax.swing.JTextField jTextFieldEtbDateTime;
     private javax.swing.JTextField jTextFieldEtbLocation;
+    private javax.swing.JTextField jTextFieldEtbLocationID;
+    private javax.swing.JTextField jTextFieldEtbPosition;
+    private javax.swing.JTextField jTextFieldEtbTriageLevel;
     private javax.swing.JTextField jTextFieldInfoFW;
     private javax.swing.JTextField jTextFieldInfoHW;
     private javax.swing.JTextField jTextFieldInfoManuf;
     private javax.swing.JTextField jTextFieldInfoModel;
     private javax.swing.JTextField jTextFieldInfoSerial;
     private javax.swing.JTextField jTextFieldIntervalTemp;
-    private javax.swing.JTextField jTextFieldIntervalTemp1;
     // End of variables declaration//GEN-END:variables
 
     protected GraphBuffer buff_skinTemperature = new GraphBuffer(100);
