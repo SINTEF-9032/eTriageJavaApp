@@ -2,16 +2,16 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>org.thingml</groupId>
-  <artifactId>traale-driver</artifactId>
+  <artifactId>etriage-driver</artifactId>
   <version>0.7.0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>Traale :: Driver</name>
+  <name>eTriage :: Driver</name>
   
   
   <parent>
         <groupId>org.thingml</groupId>
-        <artifactId>traale</artifactId>
+        <artifactId>etriage</artifactId>
         <version>0.7.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
   </parent>
