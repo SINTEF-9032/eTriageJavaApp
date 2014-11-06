@@ -37,11 +37,11 @@ public class Etriage extends BGAPIDefaultListener implements TimeSynchronizable 
     
     private ArrayList<EtriageListener> listeners = new ArrayList<EtriageListener>();
     
-    public synchronized void addTraaleListener(EtriageListener l) {
+    public synchronized void addEtbListener(EtriageListener l) {
         listeners.add(l);
     }
     
-    public synchronized void removeTraaleListener(EtriageListener l) {
+    public synchronized void removeEtbListener(EtriageListener l) {
         listeners.remove(l);
     }
     
@@ -514,7 +514,7 @@ public class Etriage extends BGAPIDefaultListener implements TimeSynchronizable 
                 case ETB_LOCATION: etbLocation(value); break;
                         
                 default: 
-                    System.out.println("[Traale Driver] Got unknown attribute. Handle=" + Integer.toHexString(atthandle) + " val = " + bytesToString(value));
+                    System.out.println("[eTriage Driver] Got unknown attribute. Handle=" + Integer.toHexString(atthandle) + " val = " + bytesToString(value));
                     break;
             }
         }

@@ -47,7 +47,7 @@ public class EtriageFrame extends javax.swing.JFrame implements EtriageListener 
     protected BLEExplorerDialog bledialog = new BLEExplorerDialog();
     protected BitRateCounter bitrate;
     
-    protected Etriage traale;
+    protected Etriage etb;
     
     /**
      * Creates new form TraaleFrame
@@ -67,9 +67,9 @@ public class EtriageFrame extends javax.swing.JFrame implements EtriageListener 
     }
     
     protected void reset() {
-        if (traale != null) { 
-            traale.removeTraaleListener(this);
-            traale.disconnect();
+        if (etb != null) { 
+            etb.removeTraaleListener(this);
+            etb.disconnect();
         }
         jProgressBarValueTemp.setValue(0);
         jTextFieldIntervalTemp.setText("N/A");
@@ -101,8 +101,8 @@ public class EtriageFrame extends javax.swing.JFrame implements EtriageListener 
     
     public void setSensor(Etriage sensor) {
         reset();
-        traale = sensor;
-        traale.addTraaleListener(this);
+        etb = sensor;
+        etb.addTraaleListener(this);
         
         if (bitrate != null) bitrate.request_stop();
         bitrate = new BitRateCounter();
@@ -760,15 +760,15 @@ public class EtriageFrame extends javax.swing.JFrame implements EtriageListener 
     private void jButtonConnectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConnectionActionPerformed
 
         reset();
-        //if (traale != null) traale.stopTimeSync();
+        //if (etb != null) etb.stopTimeSync();
         
         bledialog.setVisible(true);
         
         if (bledialog.isConnected()) {
             
-            traale = new Etriage(bledialog.getBgapi(), bledialog.getConnection());
-            traale.addTraaleListener(this);
-            traale.subscribeBattery();
+            etb = new Etriage(bledialog.getBgapi(), bledialog.getConnection());
+            etb.addTraaleListener(this);
+            etb.subscribeBattery();
             
             if (bitrate != null) bitrate.request_stop();
             bitrate = new BitRateCounter();
@@ -777,7 +777,7 @@ public class EtriageFrame extends javax.swing.JFrame implements EtriageListener 
             
             //traale.startTimeSync();
             
-            traale.requestDeviceInfo();
+            etb.requestDeviceInfo();
             
         }
         if(!bledialog.isConnected()) {
@@ -787,24 +787,24 @@ public class EtriageFrame extends javax.swing.JFrame implements EtriageListener 
     }//GEN-LAST:event_jButtonConnectionActionPerformed
 
     private void jCheckBoxSubscribeTempActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxSubscribeTempActionPerformed
-        if (traale != null) {
+        if (etb != null) {
             if (jCheckBoxSubscribeTemp.isSelected()) {
-                traale.subscribeSkinTemperature();
-                traale.readSkinTemperatureInterval();
+                etb.subscribeSkinTemperature();
+                etb.readSkinTemperatureInterval();
             }
             else {
-                traale.unsubscribeSkinTemperature();
+                etb.unsubscribeSkinTemperature();
             }
         }
     }//GEN-LAST:event_jCheckBoxSubscribeTempActionPerformed
 
     private void jCheckBoxSubscribeBattActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxSubscribeBattActionPerformed
-        if (traale != null) {
+        if (etb != null) {
             if (jCheckBoxSubscribeBatt.isSelected()) {
-                traale.subscribeBattery();
+                etb.subscribeBattery();
             }
             else {
-                traale.unsubscribeBattery();
+                etb.unsubscribeBattery();
             }
         }
     }//GEN-LAST:event_jCheckBoxSubscribeBattActionPerformed
@@ -814,7 +814,7 @@ public class EtriageFrame extends javax.swing.JFrame implements EtriageListener 
     }//GEN-LAST:event_jTextFieldInfoManufActionPerformed
 
     private void jButtonReqInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReqInfoActionPerformed
-        if (traale != null) traale.requestDeviceInfo();
+        if (etb != null) etb.requestDeviceInfo();
     }//GEN-LAST:event_jButtonReqInfoActionPerformed
 
     private void jButtonGraphTempActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGraphTempActionPerformed
@@ -831,8 +831,8 @@ public class EtriageFrame extends javax.swing.JFrame implements EtriageListener 
             logform.setVisible(false);
             logform.dispose();
         }
-        if (traale != null) {
-            logform = new FileLoggerForm(traale);
+        if (etb != null) {
+            logform = new FileLoggerForm(etb);
             logform.pack();
             logform.setVisible(true);
         }
@@ -848,7 +848,7 @@ public class EtriageFrame extends javax.swing.JFrame implements EtriageListener 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         if (hideMode) return;
         System.out.println("Closing connections.");
-        if (traale!=null) traale.disconnect();
+        if (etb!=null) etb.disconnect();
         if (bledialog!=null) bledialog.disconnect();
         this.dispose();
         System.exit(0);
@@ -857,9 +857,9 @@ public class EtriageFrame extends javax.swing.JFrame implements EtriageListener 
     private int ping_seq = 0;
     
     private void jCheckBoxBWTestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxBWTestActionPerformed
-        if (traale != null) {
-            if (jCheckBoxBWTest.isSelected()) traale.subscribeTestPattern();
-            else traale.unsubscribeTestPattern();
+        if (etb != null) {
+            if (jCheckBoxBWTest.isSelected()) etb.subscribeTestPattern();
+            else etb.unsubscribeTestPattern();
         }
     }//GEN-LAST:event_jCheckBoxBWTestActionPerformed
 
@@ -891,19 +891,19 @@ public class EtriageFrame extends javax.swing.JFrame implements EtriageListener 
     }//GEN-LAST:event_jTextFieldEtbLocationActionPerformed
 
     private void jButtonReadEtbLocationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReadEtbLocationActionPerformed
-        if (traale != null) traale.readetbLocation();
+        if (etb != null) etb.readetbLocation();
     }//GEN-LAST:event_jButtonReadEtbLocationActionPerformed
 
     private void jButtonWriteEtbLocationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonWriteEtbLocationActionPerformed
-        if (traale != null) traale.setetbLocation(Integer.parseInt(jTextFieldEtbLocation.getText()));
+        if (etb != null) etb.setetbLocation(Integer.parseInt(jTextFieldEtbLocation.getText()));
     }//GEN-LAST:event_jButtonWriteEtbLocationActionPerformed
 
     private void jButtonWriteIntervalTempActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonWriteIntervalTempActionPerformed
-        if (traale != null) traale.setSkinTemperatureInterval(Integer.parseInt(jTextFieldIntervalTemp.getText()));
+        if (etb != null) etb.setSkinTemperatureInterval(Integer.parseInt(jTextFieldIntervalTemp.getText()));
     }//GEN-LAST:event_jButtonWriteIntervalTempActionPerformed
 
     private void jButtonReadIntervalTempActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReadIntervalTempActionPerformed
-        if (traale != null) traale.readSkinTemperatureInterval();
+        if (etb != null) etb.readSkinTemperatureInterval();
     }//GEN-LAST:event_jButtonReadIntervalTempActionPerformed
 
     private void jTextFieldIntervalTempActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldIntervalTempActionPerformed
@@ -1201,16 +1201,16 @@ public class EtriageFrame extends javax.swing.JFrame implements EtriageListener 
         public void run() {
 
            long old_time = System.currentTimeMillis();
-           long old_bytes = traale.getReceivedBytes();
+           long old_bytes = etb.getReceivedBytes();
 
-           while (traale != null && !stop) {
+           while (etb != null && !stop) {
                 try {
                     Thread.sleep(update_rate);
                 } catch (InterruptedException ex) {
                     Logger.getLogger(BitRateCounter.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 long new_time = System.currentTimeMillis();
-                long new_bytes = traale.getReceivedBytes();
+                long new_bytes = etb.getReceivedBytes();
 
                 int bitrate = (int)(((new_bytes - old_bytes) * 1000) / (new_time - old_time));
 

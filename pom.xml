@@ -4,7 +4,7 @@
   <artifactId>etriage</artifactId>
   <packaging>pom</packaging>
   <name>eTriage :: Root</name>
-  <url>https://github.com/SINTEF-9012/traale</url>
+  <url>https://github.com/SINTEF-9032/eTriageJavaApp</url>
   
   <developers>
     <developer>
@@ -36,7 +36,7 @@
   
   <modules>
         <module>etriage-driver</module>
-    <module>etriage-eTriage</module>
+        <module>etriage-JavaGUI</module>
   </modules>
   
       <build>
