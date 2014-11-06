@@ -15,3 +15,7 @@ keystore
 .idea/*
 .directory
 *~
+*generated-sources/*
+*generated-sources
+*surefire/*
+*surefire
