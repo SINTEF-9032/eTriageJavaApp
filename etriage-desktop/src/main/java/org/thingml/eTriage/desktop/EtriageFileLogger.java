@@ -163,100 +163,6 @@ public class EtriageFileLogger implements EtriageListener {
     }
 
     @Override
-    public void humidity(int t1, int h1, int t2, int h2, int timestamp) {
-        if (logging) {
-            hum.println(currentTimeStamp(timestamp) + SEPARATOR + (System.currentTimeMillis() - last_hum) + SEPARATOR + tempFormat.format(t1/100.0)+ SEPARATOR + tempFormat.format(h1/100.0)+ SEPARATOR + tempFormat.format(t2/100.0)+ SEPARATOR + tempFormat.format(h2/100.0));
-            log.println(currentTimeStamp(timestamp) + SEPARATOR + "[humidity]" + SEPARATOR + tempFormat.format(t1/100.0)+ SEPARATOR + tempFormat.format(h1/100.0)+ SEPARATOR + tempFormat.format(t2/100.0)+ SEPARATOR + tempFormat.format(h2/100.0));
-            last_hum = System.currentTimeMillis();
-        }
-    }
-
-    @Override
-    public void humidityInterval(int value) {
-        if (logging) log.println(currentTimeStamp(-1) + SEPARATOR + "[humidityInterval]" + SEPARATOR + value);
-    }
-
-    @Override
-    public void imu(int ax, int ay, int az, int gx, int gy, int gz, int timestamp) {
-        if (logging) {
-              
-            imu.println(currentTimeStamp(timestamp) + SEPARATOR + (System.currentTimeMillis() - last_imu) 
-                                           + SEPARATOR + ax + SEPARATOR + ay + SEPARATOR + az
-                                           + SEPARATOR + gx + SEPARATOR + gy + SEPARATOR + gz);
-            log.println(currentTimeStamp(timestamp) + SEPARATOR + "[imu]" 
-                                           + SEPARATOR + ax + SEPARATOR + ay + SEPARATOR + az
-                                           + SEPARATOR + gx + SEPARATOR + gy + SEPARATOR + gz);
-            last_imu = System.currentTimeMillis();
-        }
-    }
-    
-     @Override
-    public void quaternion(int qw, int qx, int qy, int qz, int timestamp) {
-        if (logging) {
-                       
-            double w = ((double)qw) / (1<<15);
-            double x = ((double)qx) / (1<<15);
-            double y = ((double)qy) / (1<<15);
-            double z = ((double)qz) / (1<<15);
-
-            double heading, attitude, bank;
-
-            double sqw = w*w;
-            double sqx = x*x;
-            double sqy = y*y;
-            double sqz = z*z;
-
-            double unit = sqx + sqy + sqz + sqw; // if normalised is one, otherwise is correction factor
-            double test = x*y + z*w;
-
-            if (test > 0.499*unit) { // singularity at north pole
-                    heading = 2 * Math.atan2(x,w);
-                    attitude = Math.PI/2;
-                    bank = 0;
-            }
-            else if (test < -0.499*unit) { // singularity at south pole
-                    heading = -2 * Math.atan2(x,w);
-                    attitude = -Math.PI/2;
-                    bank = 0;
-            }
-            else {
-                heading = Math.atan2(2*y*w-2*x*z , sqx - sqy - sqz + sqw);
-                attitude = Math.asin(2*test/unit);
-                bank = Math.atan2(2*x*w-2*y*z , -sqx + sqy - sqz + sqw);
-            }
-            
-            int pi = (int)(heading* 180 / Math.PI);
-            int ro = (int)(bank* 180 / Math.PI);
-            int ya = (int)(attitude* 180 / Math.PI);
-            
-            qat.println(currentTimeStamp(timestamp) + SEPARATOR + (System.currentTimeMillis() - last_qat) + SEPARATOR + qw + SEPARATOR + qx + SEPARATOR + qy + SEPARATOR + qz
-                                           + SEPARATOR + pi + SEPARATOR + ro + SEPARATOR + ya);
-            log.println(currentTimeStamp(timestamp) + SEPARATOR + "[qat]" + SEPARATOR + qw + SEPARATOR + qx + SEPARATOR + qy + SEPARATOR + qz
-                                           + SEPARATOR + pi + SEPARATOR + ro + SEPARATOR + ya);
-            last_qat = System.currentTimeMillis();
-        }
-    }
-
-    @Override
-    public void imuMode(int value) {
-        if (logging) log.println(currentTimeStamp(-1) + SEPARATOR + "[imuMode]" + SEPARATOR + value);
-    }
-
-    @Override
-    public void magnetometer(int x, int y, int z, int timestamp) {
-       if (logging) {
-           mag.println(currentTimeStamp(timestamp) + SEPARATOR + (System.currentTimeMillis() - last_mag) + SEPARATOR + x + SEPARATOR + y + SEPARATOR + z);
-           log.println(currentTimeStamp(timestamp) + SEPARATOR + "[magnetometer]" + SEPARATOR + x + SEPARATOR + y + SEPARATOR + z);
-           last_mag = System.currentTimeMillis();
-       }
-    }
-
-    @Override
-    public void magnetometerInterval(int value) {
-        if (logging) log.println(currentTimeStamp(-1) + SEPARATOR + "[magnetometerInterval]" + SEPARATOR + value);
-    }
-
-    @Override
     public void battery(int battery, int timestamp) {
         if (logging) log.println(currentTimeStamp(timestamp) + SEPARATOR + "[battery]" + SEPARATOR + battery + "%" + SEPARATOR + timestamp);
     }
@@ -287,29 +193,45 @@ public class EtriageFileLogger implements EtriageListener {
     }
 
     @Override
-    public void imuInterrupt(int value) {
-        if (logging) log.println(currentTimeStamp(-1) + SEPARATOR + "[imuInterrupt]" + SEPARATOR + value);
-    }
-
-    @Override
     public void testPattern(byte[] data, int timestamp) {
     }
 
     @Override
     public void timeSync(int seq, int timestamp) {
-
-    }
-
-    @Override
-    public void alertLevel(int value) {
-        
     }
     
     // eTriage bracelet
+    @Override
+    public void etbDateTime(String value) {
+        if (logging) log.println(currentTimeStamp(-1) + SEPARATOR + "[etbTimeDate]" + SEPARATOR + value);
+    }
+    
+    @Override
+    public void etbPosition(String value) {
+        if (logging) log.println(currentTimeStamp(-1) + SEPARATOR + "[etbPosition]" + SEPARATOR + value);
+    }
+
+    @Override
+    public void etbTriageLevel(int value) {
+        if (logging) log.println(currentTimeStamp(-1) + SEPARATOR + "[etbTriageLevel]" + SEPARATOR + value);
+    }
+
     @Override
     public void etbLocation(int value) {
         if (logging) log.println(currentTimeStamp(-1) + SEPARATOR + "[etbLocation]" + SEPARATOR + value);
     }
 
+    @Override
+    public void etbLocationId(String value) {
+        if (logging) log.println(currentTimeStamp(-1) + SEPARATOR + "[etbLocationId]" + SEPARATOR + value);
+    }
     
+    @Override
+    public void etbConnectionInterval(int value) {
+        if (logging) log.println(currentTimeStamp(-1) + SEPARATOR + "[etbConnectionInterval]" + SEPARATOR + value);
+    }
+    
+    @Override
+    public void etbConsole(String value) {
+    }
 }

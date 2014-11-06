@@ -90,54 +90,6 @@ public class EtriageUDPLogger implements EtriageListener {
     }
 
     @Override
-    public void humidity(int t1, int h1, int t2, int h2, int timestamp) {
-//        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public void humidityInterval(int value) {
-//        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public void imu(int ax, int ay, int az, int gx, int gy, int gz, int timestamp) {
-        if (logging) {
-            long ts = etb.getEpochTimestamp(timestamp);
-            vOscAccX.send_ts_data(ts, ax);
-            vOscAccY.send_ts_data(ts, ay);
-            vOscAccZ.send_ts_data(ts, az);
-            vOscGyrX.send_ts_data(ts, gx);
-            vOscGyrY.send_ts_data(ts, gy);
-            vOscGyrZ.send_ts_data(ts, gz);
-        }
-    }
-
-    @Override
-    public void quaternion(int w, int x, int y, int z, int timestamp) {
-//        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public void imuMode(int value) {
-//        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public void imuInterrupt(int value) {
-//        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public void magnetometer(int x, int y, int z, int timestamp) {
-//        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public void magnetometerInterval(int value) {
-//        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
     public void battery(int battery, int timestamp) {
 //        throw new UnsupportedOperationException("Not supported yet.");
     }
@@ -177,16 +129,35 @@ public class EtriageUDPLogger implements EtriageListener {
 //        throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    @Override
-    public void alertLevel(int value) {
-//        throw new UnsupportedOperationException("Not supported yet.");
-    }
     
     // eTriage bracelet
     
     @Override
+    public void etbDateTime(String value) {
+    }
+    
+    @Override
+    public void etbPosition(String value) {
+    }
+
+    @Override
+    public void etbTriageLevel(int value) {
+    }
+
+    @Override
     public void etbLocation(int value) {
+    }
+
+    @Override
+    public void etbLocationId(String value) {
+    }    
+    
+    public void etbConnectionInterval(int value) {
 //        throw new UnsupportedOperationException("Not supported yet.");
     }
-  
+    
+    public void etbConsole(String value) {
+//        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
 }

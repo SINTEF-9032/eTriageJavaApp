@@ -424,9 +424,9 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jTextFieldEtbLocationID" min="-2" pref="115" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jButtonReadLocationID" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jButtonEtbReadLocationID" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jButtonWriteLocationID" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jButtonEtbWriteLocationID" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="jLabel9" min="-2" pref="110" max="-2" attributes="0"/>
@@ -513,8 +513,8 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel8" alignment="3" max="32767" attributes="0"/>
                       <Component id="jTextFieldEtbLocationID" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButtonReadLocationID" alignment="3" max="-2" attributes="0"/>
-                      <Component id="jButtonWriteLocationID" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButtonEtbReadLocationID" alignment="3" max="-2" attributes="0"/>
+                      <Component id="jButtonEtbWriteLocationID" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -687,20 +687,20 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldEtbLocationIDActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButtonReadLocationID">
+        <Component class="javax.swing.JButton" name="jButtonEtbReadLocationID">
           <Properties>
             <Property name="text" type="java.lang.String" value="Read"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonReadLocationIDActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonEtbReadLocationIDActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButtonWriteLocationID">
+        <Component class="javax.swing.JButton" name="jButtonEtbWriteLocationID">
           <Properties>
             <Property name="text" type="java.lang.String" value="Write"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonWriteLocationIDActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonEtbWriteLocationIDActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel9">

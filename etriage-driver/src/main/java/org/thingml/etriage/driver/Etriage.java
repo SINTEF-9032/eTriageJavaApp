@@ -132,189 +132,8 @@ public class Etriage extends BGAPIDefaultListener implements TimeSynchronizable 
         }
     }
     
-    /**************************************************************
-     * Humidity
-     **************************************************************/ 
-    public static final int HUMIDITY_VALUE = 0x2C;
-    public static final int HUMIDITY_CONFIG = 0x2D;
-    public static final int HUMIDITY_INTERVAL = 0x2F;
-    
-    public void subscribeHumidity() {
-        bgapi.send_attclient_write_command(connection, HUMIDITY_CONFIG, new byte[]{0x01, 0x00});
-    }
-    
-    public void unsubscribeHumidity() {
-        bgapi.send_attclient_write_command(connection, HUMIDITY_CONFIG, new byte[]{0x00, 0x00});
-    }
-    
-    public void readHumidityInterval() {
-        bgapi.send_attclient_read_by_handle(connection, HUMIDITY_INTERVAL);
-    }
-    
-    public void setHumidityInterval(int value) {
-        byte[] i = new byte[2];
-        i[1] = (byte)((value>>8) & 0xFF);
-        i[0] = (byte)(value & 0xFF);
-        bgapi.send_attclient_write_command(connection, HUMIDITY_INTERVAL, i);
-    }
-    
-    private synchronized void humidity(byte[] value) {
-        int t1 = ((value[1] & 0xFF) << 8) + (value[0] & 0xFF); if (t1 > (1<<14)) { t1 = t1 - (1<<15); }
-        int h1 = ((value[3] & 0xFF) << 8) + (value[2] & 0xFF);
-        int t2 = ((value[5] & 0xFF) << 8) + (value[4] & 0xFF); if (t2 > (1<<14)) { t2 = t2 - (1<<15); }
-        int h2 = ((value[7] & 0xFF) << 8) + (value[6] & 0xFF);
-        
-        int ts = ((value[9] & 0xFF) << 8) + (value[8] & 0xFF);
-        
-        for (EtriageListener l : listeners) {
-            l.humidity(t1, h1, t2, h2, ts*4);
-        }
-    }
-    private synchronized void humidityInterval(byte[] value) {
-        for (EtriageListener l : listeners) {
-            l.humidityInterval((value[1]<<8) + (value[0] & 0xFF));
-        }
-    }
-    
-    
-    /**************************************************************
-     * IMU
-     **************************************************************/ 
-    public static final int IMU_VALUE = 0x33;
-    public static final int IMU_CONFIG = 0x34;
-    
-    public static final int QUAT_VALUE = 0x36;
-    public static final int QUAT_CONFIG = 0x37;
-    
-    public static final int IMU_MODE = 0x42;
-    
-    public static final int IMU_INTERRUPT_VALUE = 0x3F;
-    public static final int IMU_INTERRUPT_CONFIG = 0x40;
-    
-    public void subscribeIMU() {
-        bgapi.send_attclient_write_command(connection, IMU_CONFIG, new byte[]{DEFAULT_SUB, 0x00});
-    }
-    
-    public void unsubscribeIMU() {
-        bgapi.send_attclient_write_command(connection, IMU_CONFIG, new byte[]{0x00, 0x00});
-    }
-    
-    public void subscribeQuaternion() {
-        bgapi.send_attclient_write_command(connection, QUAT_CONFIG, new byte[]{DEFAULT_SUB, 0x00});
-    }
-    
-    public void unsubscribeQuaternion() {
-        bgapi.send_attclient_write_command(connection, QUAT_CONFIG, new byte[]{0x00, 0x00});
-    }
-    
-    public void subscribeIMUInterrupt() {
-        bgapi.send_attclient_write_command(connection, IMU_INTERRUPT_CONFIG, new byte[]{0x01, 0x00});
-    }
-    
-    public void unsubscribeIMUInterrupt() {
-        bgapi.send_attclient_write_command(connection, IMU_INTERRUPT_CONFIG, new byte[]{0x00, 0x00});
-    }
-    
-    public void readIMUMode() {
-        bgapi.send_attclient_read_by_handle(connection, IMU_MODE);
-    }
-    
-    public void setIMUMode(int value) {
-        byte[] i = new byte[1];
-        i[0] = (byte)(value & 0xFF);
-        bgapi.send_attclient_write_command(connection, IMU_MODE, i);
-    }
-    
-    private synchronized void imu(byte[] value) {
-        
-        int gx = ((value[1] & 0xFF) << 8) + (value[0] & 0xFF); if (gx > (1<<15)) { gx = gx - (1<<16); }
-        int gy = ((value[3] & 0xFF) << 8) + (value[2] & 0xFF); if (gy > (1<<15)) { gy = gy - (1<<16); }
-        int gz = ((value[5] & 0xFF) << 8) + (value[4] & 0xFF); if (gz > (1<<15)) { gz = gz - (1<<16); }
-        
-        int ax = ((value[7] & 0xFF) << 8) + (value[6] & 0xFF); if (ax > (1<<15)) { ax = ax - (1<<16); }
-        int ay = ((value[9] & 0xFF) << 8) + (value[8] & 0xFF); if (ay > (1<<15)) { ay = ay - (1<<16); }
-        int az = ((value[11] & 0xFF) << 8) + (value[10] & 0xFF); if (az > (1<<15)) { az = az - (1<<16); }
-        
-        int ts = ((value[13] & 0xFF) << 8) + (value[12] & 0xFF);
-        
-        for (EtriageListener l : listeners) {
-            l.imu(ax, ay, az, gx, gy, gz, ts*4);
-        }
-    }
-    
-    private synchronized void quaternion(byte[] value) {
-        int w = ((value[1] & 0xFF) << 8) + (value[0] & 0xFF); if (w > (1<<15)) { w = w - (1<<16); }
-        int x = ((value[3] & 0xFF) << 8) + (value[2] & 0xFF); if (x > (1<<15)) { x = x - (1<<16); }
-        int y = ((value[5] & 0xFF) << 8) + (value[4] & 0xFF); if (y > (1<<15)) { y = y - (1<<16); }
-        int z = ((value[7] & 0xFF) << 8) + (value[6] & 0xFF); if (z > (1<<15)) { z = z - (1<<16); }
-        int ts = ((value[9] & 0xFF) << 8) + (value[8] & 0xFF);
-        
-        for (EtriageListener l : listeners) {
-            l.quaternion(w, x, y, z, ts*4);
-        }
-    }
-    
-    private void imuMode(byte[] value) {
-        for (EtriageListener l : listeners) {
-            l.imuMode((value[0] & 0xFF));
-        }
-    }
-    
-    private void alertLevel(byte[] value) {
-        for (EtriageListener l : listeners) {
-            l.alertLevel((value[0] & 0xFF));
-        }
-    }
-    
-    private void imuInterrupt(byte[] value) {
-        for (EtriageListener l : listeners) {
-            l.imuInterrupt((value[0] & 0xFF));
-        }
-    }
-    
-    /**************************************************************
-     * MAGNETOMETER
-     **************************************************************/ 
-    public static final int MAG_VALUE = 0x39;
-    public static final int MAG_CONFIG = 0x3A;
-    public static final int MAG_INTERVAL = 0x3C;
-    
-    public void subscribeMagnetometer() {
-        bgapi.send_attclient_write_command(connection, MAG_CONFIG, new byte[]{DEFAULT_SUB, 0x00});
-    }
-    
-    public void unsubscribeMagnetometer() {
-        bgapi.send_attclient_write_command(connection, MAG_CONFIG, new byte[]{0x00, 0x00});
-    }
-    
-    public void readMagnetometerInterval() {
-        bgapi.send_attclient_read_by_handle(connection, MAG_INTERVAL);
-    }
-    
-    public void setMagnetometerInterval(int value) {
-        byte[] i = new byte[2];
-        i[1] = (byte)((value>>8) & 0xFF);
-        i[0] = (byte)(value & 0xFF);
-        bgapi.send_attclient_write_command(connection, MAG_INTERVAL, i);
-    }
-    
-    private synchronized void magnetometer(byte[] value) {
-        int x = ((value[1] & 0xFF) << 8) + (value[0] & 0xFF); if (x > (1<<15)) { x = x - (1<<16); }
-        int y = ((value[3] & 0xFF) << 8) + (value[2] & 0xFF); if (y > (1<<15)) { y = y - (1<<16); }
-        int z = ((value[5] & 0xFF) << 8) + (value[4] & 0xFF); if (z > (1<<15)) { z = z - (1<<16); }
-        
-        int ts = ((value[7] & 0xFF) << 8) + (value[6] & 0xFF);
-        
-        for (EtriageListener l : listeners) {
-            l.magnetometer(x, y, z, ts*4);
-        }
-    }
-    private synchronized void magnetometerInterval(byte[] value) {
-        for (EtriageListener l : listeners) {
-            l.magnetometerInterval((value[1]<<8) + (value[0] & 0xFF));
-        }
-    }
-    
+
+   
     /**************************************************************
      * TESTING PATTERN
      **************************************************************/ 
@@ -450,7 +269,61 @@ public class Etriage extends BGAPIDefaultListener implements TimeSynchronizable 
      * eTriage bracelet
      **************************************************************/ 
     
+    public static final int ETB_DATETIME = 0x2C;
+    public static final int ETB_POSITION = 0x2F;
+    public static final int ETB_TRIAGE_LEVEL = 0x32;
     public static final int ETB_LOCATION = 0x35;
+    public static final int ETB_LOCATION_ID = 0x38;
+    public static final int ETB_CONNECTION_INTERVAL = 0x3F;
+    public static final int ETB_CONSOLE = 0x3B;
+
+    public void readetbDateTime() {
+        bgapi.send_attclient_read_by_handle(connection, ETB_DATETIME);
+    }
+    
+    public void setetbDateTime(int value) {
+        byte[] i = new byte[1];
+        i[0] = (byte)(value & 0xFF);
+        bgapi.send_attclient_write_command(connection, ETB_DATETIME, i);
+    }
+    
+    private synchronized void etbDateTime(byte[] value) {
+        for (EtriageListener l : listeners) {
+            l.etbDateTime(new String(value));
+        }
+    }
+    
+    public void readetbPosition() {
+        bgapi.send_attclient_read_by_handle(connection, ETB_POSITION);
+    }
+    
+    public void setetbPosition(int value) {
+        byte[] i = new byte[1];
+        i[0] = (byte)(value & 0xFF);
+        bgapi.send_attclient_write_command(connection, ETB_POSITION, i);
+    }
+    
+    private synchronized void etbPosition(byte[] value) {
+        for (EtriageListener l : listeners) {
+            l.etbPosition(new String(value));
+        }
+    }
+    
+    public void readetbTriageLevel() {
+        bgapi.send_attclient_read_by_handle(connection, ETB_TRIAGE_LEVEL);
+    }
+    
+    public void setetbTriageLevel(int value) {
+        byte[] i = new byte[1];
+        i[0] = (byte)(value & 0xFF);
+        bgapi.send_attclient_write_command(connection, ETB_TRIAGE_LEVEL, i);
+    }
+    
+    private synchronized void etbTriageLevel(byte[] value) {
+        for (EtriageListener l : listeners) {
+            l.etbTriageLevel((value[0]));
+        }
+    }
 
     public void readetbLocation() {
         bgapi.send_attclient_read_by_handle(connection, ETB_LOCATION);
@@ -467,7 +340,54 @@ public class Etriage extends BGAPIDefaultListener implements TimeSynchronizable 
             l.etbLocation((value[0]));
         }
     }
+
+    public void readetbLocationId() {
+        bgapi.send_attclient_read_by_handle(connection, ETB_LOCATION_ID);
+    }
     
+    public void setetbLocationId(int value) {
+        byte[] i = new byte[1];
+        i[0] = (byte)(value & 0xFF);
+        bgapi.send_attclient_write_command(connection, ETB_LOCATION_ID, i);
+    }
+    
+    private synchronized void etbLocationId(byte[] value) {
+        for (EtriageListener l : listeners) {
+            l.etbLocationId(new String(value));
+        }
+    }
+
+    public void readetbConnectionInterval() {
+        bgapi.send_attclient_read_by_handle(connection, ETB_CONNECTION_INTERVAL);
+    }
+    
+    public void setetbConnectionInterval(int value) {
+        byte[] i = new byte[1];
+        i[0] = (byte)(value & 0xFF);
+        bgapi.send_attclient_write_command(connection, ETB_CONNECTION_INTERVAL, i);
+    }
+    
+    private synchronized void etbConnectionInterval(byte[] value) {
+        for (EtriageListener l : listeners) {
+            l.etbConnectionInterval((value[0]));
+        }
+    }
+
+    public void readetbConsole() {
+        bgapi.send_attclient_read_by_handle(connection, ETB_CONSOLE);
+    }
+    
+    public void setetbConsole(int value) {
+        byte[] i = new byte[1];
+        i[0] = (byte)(value & 0xFF);
+        bgapi.send_attclient_write_command(connection, ETB_CONSOLE, i);
+    }
+    
+    private synchronized void etbConsole(byte[] value) {
+        for (EtriageListener l : listeners) {
+            l.etbConsole(new String(value));
+        }
+    }
     /**************************************************************
      * Receive attribute values
      **************************************************************/ 
@@ -487,17 +407,6 @@ public class Etriage extends BGAPIDefaultListener implements TimeSynchronizable 
                 case THERMOMETER_VALUE: skinTemperature(value); break;
                 case THERMOMETER_INTERVAL: skinTemperatureInterval(value); break;
                 
-                case HUMIDITY_VALUE: humidity(value); break;
-                case HUMIDITY_INTERVAL: humidityInterval(value); break;
-                
-                case IMU_VALUE: imu(value); break;
-                case QUAT_VALUE: quaternion(value); break;
-                case IMU_MODE: imuMode(value); break;
-                case IMU_INTERRUPT_VALUE: imuInterrupt(value); break;
-                
-                case MAG_VALUE: magnetometer(value); break;
-                case MAG_INTERVAL: magnetometerInterval(value); break;
-                    
                 case BATTERY_VALUE: battery(value); break;
                     
                 case MANUFACTURER: manufacturer(value); break;
@@ -509,10 +418,14 @@ public class Etriage extends BGAPIDefaultListener implements TimeSynchronizable 
                 case CLK_VALUE: timeSync(value); break;
                 case TEST_VALUE: testPattern(value); break;
                     
-                case ALERT_LEVEL: alertLevel(value); break;
-
+                case ETB_DATETIME: etbDateTime(value); break;
+                case ETB_POSITION: etbPosition(value); break;
+                case ETB_TRIAGE_LEVEL: etbTriageLevel(value); break;
                 case ETB_LOCATION: etbLocation(value); break;
-                        
+                case ETB_LOCATION_ID: etbLocationId(value); break;
+                case ETB_CONNECTION_INTERVAL: etbConnectionInterval(value); break;
+                case ETB_CONSOLE: etbConsole(value); break;
+                    
                 default: 
                     System.out.println("[eTriage Driver] Got unknown attribute. Handle=" + Integer.toHexString(atthandle) + " val = " + bytesToString(value));
                     break;

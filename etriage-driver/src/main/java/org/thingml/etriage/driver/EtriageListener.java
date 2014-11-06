@@ -28,19 +28,6 @@ public interface EtriageListener {
     void skinTemperature(double temp, int timestamp);
     void skinTemperatureInterval(int value);
     
-    void humidity(int t1, int h1, int t2, int h2, int timestamp);
-    void humidityInterval(int value);
-    
-    void imu(int ax, int ay, int az, int gx, int gy, int gz, int timestamp);
-    
-    void quaternion(int w, int x, int y, int z, int timestamp);
-    
-    void imuMode(int value);
-    void imuInterrupt(int value);
-    
-    void magnetometer(int x, int y, int z, int timestamp);
-    void magnetometerInterval(int value);
-    
     void battery(int battery, int timestamp);
     
     void testPattern(byte[] data, int timestamp);
@@ -54,9 +41,12 @@ public interface EtriageListener {
     void hw_revision(String value);
     void fw_revision(String value);
     
-    void alertLevel(int value);
-  
     // New eTriage bracelet (etb) entries
+    void etbDateTime(String value);
+    void etbPosition(String value);
+    void etbTriageLevel(int value);
     void etbLocation(int value);
-
+    void etbLocationId(String value);
+    void etbConnectionInterval(int value);
+    void etbConsole(String value);
 }

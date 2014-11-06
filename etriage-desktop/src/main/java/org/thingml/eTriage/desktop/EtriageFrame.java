@@ -162,8 +162,8 @@ public class EtriageFrame extends javax.swing.JFrame implements EtriageListener 
         jButtonWriteEtbTriageLevel = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jTextFieldEtbLocationID = new javax.swing.JTextField();
-        jButtonReadLocationID = new javax.swing.JButton();
-        jButtonWriteLocationID = new javax.swing.JButton();
+        jButtonEtbReadLocationID = new javax.swing.JButton();
+        jButtonEtbWriteLocationID = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         jTextFieldConnectionInterval = new javax.swing.JTextField();
         jButtonReadConnetionInterval = new javax.swing.JButton();
@@ -511,17 +511,17 @@ public class EtriageFrame extends javax.swing.JFrame implements EtriageListener 
             }
         });
 
-        jButtonReadLocationID.setText("Read");
-        jButtonReadLocationID.addActionListener(new java.awt.event.ActionListener() {
+        jButtonEtbReadLocationID.setText("Read");
+        jButtonEtbReadLocationID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonReadLocationIDActionPerformed(evt);
+                jButtonEtbReadLocationIDActionPerformed(evt);
             }
         });
 
-        jButtonWriteLocationID.setText("Write");
-        jButtonWriteLocationID.addActionListener(new java.awt.event.ActionListener() {
+        jButtonEtbWriteLocationID.setText("Write");
+        jButtonEtbWriteLocationID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonWriteLocationIDActionPerformed(evt);
+                jButtonEtbWriteLocationIDActionPerformed(evt);
             }
         });
 
@@ -589,9 +589,9 @@ public class EtriageFrame extends javax.swing.JFrame implements EtriageListener 
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jTextFieldEtbLocationID, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonReadLocationID)
+                                .addComponent(jButtonEtbReadLocationID)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonWriteLocationID))
+                                .addComponent(jButtonEtbWriteLocationID))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel19Layout.createSequentialGroup()
                                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -658,8 +658,8 @@ public class EtriageFrame extends javax.swing.JFrame implements EtriageListener 
                 .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jTextFieldEtbLocationID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonReadLocationID)
-                    .addComponent(jButtonWriteLocationID))
+                    .addComponent(jButtonEtbReadLocationID)
+                    .addComponent(jButtonEtbWriteLocationID))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -874,11 +874,11 @@ public class EtriageFrame extends javax.swing.JFrame implements EtriageListener 
     }//GEN-LAST:event_jTextFieldInfoFWActionPerformed
 
     private void jButtonWriteEtbDateTimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonWriteEtbDateTimeActionPerformed
-        // TODO add your handling code here:
+        if (etb != null) etb.setetbDateTime(Integer.parseInt(jTextFieldEtbDateTime.getText()));
     }//GEN-LAST:event_jButtonWriteEtbDateTimeActionPerformed
 
     private void jButtonReadEtbDateTimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReadEtbDateTimeActionPerformed
-        // TODO add your handling code here:
+        if (etb != null) etb.readetbDateTime();
     }//GEN-LAST:event_jButtonReadEtbDateTimeActionPerformed
 
     private void jTextFieldEtbDateTimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldEtbDateTimeActionPerformed
@@ -914,11 +914,11 @@ public class EtriageFrame extends javax.swing.JFrame implements EtriageListener 
     }//GEN-LAST:event_jTextFieldEtbPositionActionPerformed
 
     private void jButtonReadEtbPositionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReadEtbPositionActionPerformed
-        // TODO add your handling code here:
+        if (etb != null) etb.readetbPosition();
     }//GEN-LAST:event_jButtonReadEtbPositionActionPerformed
 
     private void jButtonWriteEtbPositonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonWriteEtbPositonActionPerformed
-        // TODO add your handling code here:
+        if (etb != null) etb.setetbPosition(Integer.parseInt(jTextFieldEtbPosition.getText()));
     }//GEN-LAST:event_jButtonWriteEtbPositonActionPerformed
 
     private void jTextFieldEtbTriageLevelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldEtbTriageLevelActionPerformed
@@ -926,35 +926,35 @@ public class EtriageFrame extends javax.swing.JFrame implements EtriageListener 
     }//GEN-LAST:event_jTextFieldEtbTriageLevelActionPerformed
 
     private void jButtonReadEtbTriageLevelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReadEtbTriageLevelActionPerformed
-        // TODO add your handling code here:
+        if (etb != null) etb.readetbTriageLevel();
     }//GEN-LAST:event_jButtonReadEtbTriageLevelActionPerformed
 
     private void jButtonWriteEtbTriageLevelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonWriteEtbTriageLevelActionPerformed
-        // TODO add your handling code here:
+        if (etb != null) etb.setetbTriageLevel(Integer.parseInt(jTextFieldEtbTriageLevel.getText()));
     }//GEN-LAST:event_jButtonWriteEtbTriageLevelActionPerformed
 
     private void jTextFieldEtbLocationIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldEtbLocationIDActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldEtbLocationIDActionPerformed
 
-    private void jButtonReadLocationIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReadLocationIDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonReadLocationIDActionPerformed
+    private void jButtonEtbReadLocationIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEtbReadLocationIDActionPerformed
+        if (etb != null) etb.readetbLocationId();
+    }//GEN-LAST:event_jButtonEtbReadLocationIDActionPerformed
 
-    private void jButtonWriteLocationIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonWriteLocationIDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonWriteLocationIDActionPerformed
+    private void jButtonEtbWriteLocationIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEtbWriteLocationIDActionPerformed
+        if (etb != null) etb.setetbLocationId(Integer.parseInt(jTextFieldEtbLocationID.getText()));
+    }//GEN-LAST:event_jButtonEtbWriteLocationIDActionPerformed
 
     private void jTextFieldConnectionIntervalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldConnectionIntervalActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldConnectionIntervalActionPerformed
 
     private void jButtonReadConnetionIntervalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReadConnetionIntervalActionPerformed
-        // TODO add your handling code here:
+        if (etb != null) etb.readetbConnectionInterval();
     }//GEN-LAST:event_jButtonReadConnetionIntervalActionPerformed
 
     private void jButtonWriteConnectionIntervalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonWriteConnectionIntervalActionPerformed
-        // TODO add your handling code here:
+        if (etb != null) etb.setetbConnectionInterval(Integer.parseInt(jTextFieldConnectionInterval.getText()));
     }//GEN-LAST:event_jButtonWriteConnectionIntervalActionPerformed
     
     /**
@@ -981,6 +981,8 @@ public class EtriageFrame extends javax.swing.JFrame implements EtriageListener 
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonConnection;
+    private javax.swing.JButton jButtonEtbReadLocationID;
+    private javax.swing.JButton jButtonEtbWriteLocationID;
     private javax.swing.JButton jButtonGraphTemp;
     private javax.swing.JButton jButtonLog;
     private javax.swing.JButton jButtonReadConnetionInterval;
@@ -989,7 +991,6 @@ public class EtriageFrame extends javax.swing.JFrame implements EtriageListener 
     private javax.swing.JButton jButtonReadEtbPosition;
     private javax.swing.JButton jButtonReadEtbTriageLevel;
     private javax.swing.JButton jButtonReadIntervalTemp;
-    private javax.swing.JButton jButtonReadLocationID;
     private javax.swing.JButton jButtonReqInfo;
     private javax.swing.JButton jButtonWriteConnectionInterval;
     private javax.swing.JButton jButtonWriteEtbDateTime;
@@ -997,7 +998,6 @@ public class EtriageFrame extends javax.swing.JFrame implements EtriageListener 
     private javax.swing.JButton jButtonWriteEtbPositon;
     private javax.swing.JButton jButtonWriteEtbTriageLevel;
     private javax.swing.JButton jButtonWriteIntervalTemp;
-    private javax.swing.JButton jButtonWriteLocationID;
     private javax.swing.JCheckBox jCheckBoxBWTest;
     private javax.swing.JCheckBox jCheckBoxSubscribeBatt;
     private javax.swing.JCheckBox jCheckBoxSubscribeTemp;
@@ -1107,42 +1107,6 @@ public class EtriageFrame extends javax.swing.JFrame implements EtriageListener 
     }
 
     @Override
-    public void humidityInterval(int value) {
-    }
-
-    public void imuInterval(int value) {
-    }
-
-    @Override
-    public void magnetometer(int x, int y, int z, int timestamp) {
-    }
-
-    @Override
-    public void magnetometerInterval(int value) {
-    }
-
-    @Override
-    public void humidity(int t1, int h1, int t2, int h2, int timestamp) {
-    }
-
-    @Override
-    public void imu(int ax, int ay, int az, int gx, int gy, int gz, int timestamp) {
-    }
-    
-    
-    @Override
-    public void quaternion(int iw, int ix, int iy, int iz, int timestamp) {
-    }
-
-    @Override
-    public void imuMode(int value) {
-    }
-    
-    @Override
-    public void imuInterrupt(int value) {
-    }
-
-    @Override
     public void testPattern(byte[] data, int timestamp) {
         long time = timestamp;
         int diff = (int)(time - last_test);
@@ -1159,11 +1123,6 @@ public class EtriageFrame extends javax.swing.JFrame implements EtriageListener 
 
     protected GraphBuffer brate = new GraphBuffer(100);
 
-    @Override
-    public void alertLevel(int value) {
-//        jComboBox2.setSelectedIndex(value);
-    }
-    
     
     public void skinTemperature(double temp, int timestamp) {
         jProgressBarValueTemp.setString(numFormat.format(temp) + "°C");
@@ -1185,9 +1144,34 @@ public class EtriageFrame extends javax.swing.JFrame implements EtriageListener 
         jTextFieldIntervalTemp.setText("" + value);
     }
 
+    public void etbDateTime(String value) {
+        jTextFieldEtbDateTime.setText("" + value);
+    }
+    
+    public void etbPosition(String value) {
+        jTextFieldEtbPosition.setText("" + value);
+    }
+    
+    public void etbTriageLevel(int value) {
+        jTextFieldEtbTriageLevel.setText("" + value);
+    }
+    
     public void etbLocation(int value) {
         jTextFieldEtbLocation.setText("" + value);
     }
+
+    public void etbLocationId(String value) {
+        jTextFieldEtbLocationID.setText("" + value);
+    }
+    
+    public void etbConnectionInterval(int value) {
+        jTextFieldConnectionInterval.setText("" + value);
+    }
+
+    public void etbConsole(String value) {
+        // TBD
+    }
+    
     class BitRateCounter extends Thread {
     
         private int update_rate = 100; // 1000 ms
