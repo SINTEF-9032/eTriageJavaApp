@@ -50,7 +50,7 @@ public class EtriageFrame extends javax.swing.JFrame implements EtriageListener 
     protected Etriage etb;
     
     /**
-     * Creates new form TraaleFrame
+     * Creates new form EtriageFrame
      */
     public EtriageFrame() {
         initComponents();
@@ -775,7 +775,6 @@ public class EtriageFrame extends javax.swing.JFrame implements EtriageListener 
             bitrate.start();
             //jTextFieldStatus.setText("Connected.");
             
-            //traale.startTimeSync();
             
             etb.requestDeviceInfo();
             

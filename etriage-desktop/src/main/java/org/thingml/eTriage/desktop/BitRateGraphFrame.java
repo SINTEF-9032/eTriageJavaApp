@@ -56,7 +56,7 @@ public class BitRateGraphFrame extends javax.swing.JFrame {
         jPanel1 = new BarGraphPanel(brate, "Bandwidth Usage (bytes/sec)", 0, 5000, 1000, Color.red);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Traale BLE Bandwidth Usage");
+        setTitle("eTriage BLE Bandwidth Usage");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 BitRateGraphFrame.this.windowClosed(evt);

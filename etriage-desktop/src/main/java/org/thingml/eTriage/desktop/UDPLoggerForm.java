@@ -13,13 +13,13 @@ import org.thingml.etriage.driver.Etriage;
 public class UDPLoggerForm extends javax.swing.JFrame {
     protected String unitName;
     protected EtriageUDPLogger logger;
-    protected Etriage traale;
+    protected Etriage etb;
 
     /**
      * Creates new form UDPLoggerForm
      */
     public UDPLoggerForm(Etriage t) {
-        this.traale = t;
+        this.etb = t;
         initComponents();
     }
 
@@ -90,7 +90,7 @@ public class UDPLoggerForm extends javax.swing.JFrame {
 
     private void jButtonStopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonStopActionPerformed
         if (logger != null) {
-            traale.removeEtbListener(logger);
+            etb.removeEtbListener(logger);
             logger.stopLogging();
             logger = null;
         }
@@ -100,8 +100,8 @@ public class UDPLoggerForm extends javax.swing.JFrame {
 
     private void jButtonStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonStartActionPerformed
         unitName = jTextFieldProbeName.getText();
-        logger = new EtriageUDPLogger(unitName, traale);
-        traale.addEtbListener(logger);
+        logger = new EtriageUDPLogger(unitName, etb);
+        etb.addEtbListener(logger);
         logger.startLogging();
         jButtonStart.setEnabled(false);
         jButtonStop.setEnabled(true);

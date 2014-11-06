@@ -45,7 +45,7 @@ public class EtriageFileLogger implements EtriageListener {
     
     protected File folder;
     
-    protected Etriage traale;
+    protected Etriage etb;
     
     protected boolean logging = false;
     protected boolean request_start = false;
@@ -64,9 +64,9 @@ public class EtriageFileLogger implements EtriageListener {
     protected PrintWriter hum;
     protected PrintWriter mag;
     
-    public EtriageFileLogger(File folder, Etriage traale) {
+    public EtriageFileLogger(File folder, Etriage etb) {
         this.folder = folder;
-        this.traale = traale;
+        this.etb = etb;
     }
     
     public boolean isLogging() {
@@ -75,23 +75,23 @@ public class EtriageFileLogger implements EtriageListener {
     
     public void startLoggingInFolder(File sFolder) {
         try {
-           log = new PrintWriter(new FileWriter(new File(sFolder, "Traale_log.txt")));
-           log.println("# This file contains one line per data received from the traale unit.");
+           log = new PrintWriter(new FileWriter(new File(sFolder, "eTriage_log.txt")));
+           log.println("# This file contains one line per data received from the etb unit.");
            
-           ski = new PrintWriter(new FileWriter(new File(sFolder, "Traale_ski.txt")));
+           ski = new PrintWriter(new FileWriter(new File(sFolder, "eTriage_ski.txt")));
            ski.println("RXTime" + SEPARATOR + "CorrTime" + SEPARATOR + "RawTime" + SEPARATOR + "dT" + SEPARATOR + "Skin Temperature (°C)");
            
-           hum = new PrintWriter(new FileWriter(new File(sFolder, "Traale_hum.txt")));
+           hum = new PrintWriter(new FileWriter(new File(sFolder, "eTriage_hum.txt")));
            hum.println("RXTime" + SEPARATOR + "CorrTime" + SEPARATOR + "RawTime" + SEPARATOR + "dT" + SEPARATOR + "T1" + SEPARATOR + "H1" + SEPARATOR + "T2" + SEPARATOR + "H2");
            
-           mag = new PrintWriter(new FileWriter(new File(sFolder, "Traale_mag.txt")));
+           mag = new PrintWriter(new FileWriter(new File(sFolder, "eTriage_mag.txt")));
            mag.println("RXTime" + SEPARATOR + "CorrTime" + SEPARATOR + "RawTime" + SEPARATOR + "dT" + SEPARATOR + "Mag. X" + SEPARATOR + "Mag. Y" + SEPARATOR + "Mag. Z");
            
            
-           imu = new PrintWriter(new FileWriter(new File(sFolder, "Traale_imu.txt")));
+           imu = new PrintWriter(new FileWriter(new File(sFolder, "eTriage_imu.txt")));
            imu.println("RXTime" + SEPARATOR + "CorrTime" + SEPARATOR + "RawTime" + SEPARATOR + "dT" + SEPARATOR +  "Acc. X" + SEPARATOR + "Acc. Y" + SEPARATOR + "Acc. Z" + SEPARATOR + "Gyro. X" + SEPARATOR + "Gyro. Y" + SEPARATOR + "Gyro. Z");
 
-           qat = new PrintWriter(new FileWriter(new File(sFolder, "Traale_qat.txt")));
+           qat = new PrintWriter(new FileWriter(new File(sFolder, "eTriage_qat.txt")));
            qat.println("RXTime" + SEPARATOR + "CorrTime" + SEPARATOR + "RawTime" + SEPARATOR + "dT" + SEPARATOR + "Quad. W" + SEPARATOR + "Quad. X" + SEPARATOR + "Quad. Y" + SEPARATOR + "Quad. Z" + SEPARATOR + "Pitch" + SEPARATOR + "Roll" + SEPARATOR + "Yaw");
 
            
@@ -143,8 +143,8 @@ public class EtriageFileLogger implements EtriageListener {
     }
     
     public String currentTimeStamp(int timestamp) {
-        if (timestamp<0 || traale == null) return "" + System.currentTimeMillis() + SEPARATOR + "?" + SEPARATOR + "?";
-        else return "" + System.currentTimeMillis() + SEPARATOR + traale.getEpochTimestamp(timestamp) + SEPARATOR + timestamp;
+        if (timestamp<0 || etb == null) return "" + System.currentTimeMillis() + SEPARATOR + "?" + SEPARATOR + "?";
+        else return "" + System.currentTimeMillis() + SEPARATOR + etb.getEpochTimestamp(timestamp) + SEPARATOR + timestamp;
     }
         
     private DecimalFormat tempFormat = new DecimalFormat("0.00");

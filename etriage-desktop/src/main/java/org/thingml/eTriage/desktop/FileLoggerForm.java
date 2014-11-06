@@ -39,12 +39,12 @@ public class FileLoggerForm extends javax.swing.JFrame {
 
     JFileChooser chooser = new JFileChooser();
     Preferences prefs = Preferences.userRoot().node(this.getClass().getName());
-    Etriage traale;
+    Etriage etb;
     EtriageFileLogger logger;
     
     /** Creates new form FileLoggerForm */
     public FileLoggerForm(Etriage b) {
-        this.traale = b;
+        this.etb = b;
         initComponents();
         chooser.setFileSelectionMode( JFileChooser.DIRECTORIES_ONLY);
         chooser.setMultiSelectionEnabled(false);
@@ -68,7 +68,7 @@ public class FileLoggerForm extends javax.swing.JFrame {
         jButtonOscLog = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Traale File Logger");
+        setTitle("eTriage File Logger");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
@@ -170,8 +170,8 @@ private void jButtonRecordActionPerformed(java.awt.event.ActionEvent evt) {//GEN
         else return; // abort
     }
     prefs.put("LogFolder", folder.getAbsolutePath());
-    logger = new EtriageFileLogger(folder, traale);
-    traale.addEtbListener(logger);
+    logger = new EtriageFileLogger(folder, etb);
+    etb.addEtbListener(logger);
     logger.startLogging();
     jButtonRecord.setEnabled(false);
     jButtonStop.setEnabled(true);
@@ -179,7 +179,7 @@ private void jButtonRecordActionPerformed(java.awt.event.ActionEvent evt) {//GEN
 
 private void jButtonStopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonStopActionPerformed
     if (logger != null) {
-        traale.removeEtbListener(logger);
+        etb.removeEtbListener(logger);
         logger.stopLogging();
         logger = null;
     }
@@ -189,14 +189,14 @@ private void jButtonStopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
 
 private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
     if (logger != null) {
-        traale.removeEtbListener(logger);
+        etb.removeEtbListener(logger);
         logger.stopLogging();
         logger = null;
     }
 }//GEN-LAST:event_formWindowClosed
 
     private void jButtonOscLogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOscLogActionPerformed
-        UDPLoggerForm form = new UDPLoggerForm(traale);
+        UDPLoggerForm form = new UDPLoggerForm(etb);
         form.pack();
         form.setVisible(true);
     }//GEN-LAST:event_jButtonOscLogActionPerformed

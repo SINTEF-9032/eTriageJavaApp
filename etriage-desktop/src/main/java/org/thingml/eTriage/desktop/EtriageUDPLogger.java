@@ -28,7 +28,7 @@ import org.thingml.etriage.driver.EtriageListener;
  */
 public class EtriageUDPLogger implements EtriageListener {
 
-    private Etriage traale;
+    private Etriage etb;
     private String probeName;
     private UDPOscComm vOscAccX;
     private UDPOscComm vOscAccY;
@@ -38,8 +38,8 @@ public class EtriageUDPLogger implements EtriageListener {
     private UDPOscComm vOscGyrZ;
     private boolean logging = false;
     
-    public EtriageUDPLogger(String probeName, Etriage traale) {
-        this.traale = traale;
+    public EtriageUDPLogger(String probeName, Etriage etb) {
+        this.etb = etb;
         this.probeName = probeName;
         this.logging = false;
     }
@@ -102,7 +102,7 @@ public class EtriageUDPLogger implements EtriageListener {
     @Override
     public void imu(int ax, int ay, int az, int gx, int gy, int gz, int timestamp) {
         if (logging) {
-            long ts = traale.getEpochTimestamp(timestamp);
+            long ts = etb.getEpochTimestamp(timestamp);
             vOscAccX.send_ts_data(ts, ax);
             vOscAccY.send_ts_data(ts, ay);
             vOscAccZ.send_ts_data(ts, az);
