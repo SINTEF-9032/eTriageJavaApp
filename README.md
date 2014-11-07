@@ -1,16 +1,14 @@
-Drivers and applications for the Traale sensor unit developed by SINTEF.
+Drivers and applications for the eTriage sensor unit.
 
 Download
 --------
-* Latest snapshot build: http://dist.thingml.org/traale/
-* To run, just launch http://dist.thingml.org/traale/Traale.jnlp
-* To run the 3D demo application: http://dist.thingml.org/traale/Traale3D.jnlp
+* Source only
 
 Bugs and Feature requests
 -------------------------
-Please see and use the issue tracker at: https://github.com/SINTEF-9012/traale/issues
+Please see and use the issue tracker at: https://github.com/SINTEF-9032/eTriageJavaApp/issues
 
 Screenshot
 ----------
 
-![Traale Desktop Application](https://raw.github.com/SINTEF-9012/traale/master/traale-resources/screenshots/TraaleJava2.png)
+![Traale Desktop Application](https://github.com/SINTEF-9032/eTriageJavaApp/blob/master/etriage-resources/screenshots/eTriageJavaApp2.PNG)
