@@ -874,7 +874,7 @@ public class EtriageFrame extends javax.swing.JFrame implements EtriageListener 
     }//GEN-LAST:event_jTextFieldInfoFWActionPerformed
 
     private void jButtonWriteEtbDateTimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonWriteEtbDateTimeActionPerformed
-        if (etb != null) etb.setetbDateTime(Integer.parseInt(jTextFieldEtbDateTime.getText()));
+        if (etb != null) etb.setetbDateTime(jTextFieldEtbDateTime.getText());
     }//GEN-LAST:event_jButtonWriteEtbDateTimeActionPerformed
 
     private void jButtonReadEtbDateTimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReadEtbDateTimeActionPerformed
@@ -918,7 +918,7 @@ public class EtriageFrame extends javax.swing.JFrame implements EtriageListener 
     }//GEN-LAST:event_jButtonReadEtbPositionActionPerformed
 
     private void jButtonWriteEtbPositonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonWriteEtbPositonActionPerformed
-        if (etb != null) etb.setetbPosition(Integer.parseInt(jTextFieldEtbPosition.getText()));
+        if (etb != null) etb.setetbPosition(jTextFieldEtbPosition.getText());
     }//GEN-LAST:event_jButtonWriteEtbPositonActionPerformed
 
     private void jTextFieldEtbTriageLevelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldEtbTriageLevelActionPerformed
@@ -942,7 +942,7 @@ public class EtriageFrame extends javax.swing.JFrame implements EtriageListener 
     }//GEN-LAST:event_jButtonEtbReadLocationIDActionPerformed
 
     private void jButtonEtbWriteLocationIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEtbWriteLocationIDActionPerformed
-        if (etb != null) etb.setetbLocationId(Integer.parseInt(jTextFieldEtbLocationID.getText()));
+        if (etb != null) etb.setetbLocationId(jTextFieldEtbLocationID.getText());
     }//GEN-LAST:event_jButtonEtbWriteLocationIDActionPerformed
 
     private void jTextFieldConnectionIntervalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldConnectionIntervalActionPerformed

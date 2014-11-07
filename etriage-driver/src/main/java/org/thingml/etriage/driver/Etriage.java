@@ -281,9 +281,8 @@ public class Etriage extends BGAPIDefaultListener implements TimeSynchronizable 
         bgapi.send_attclient_read_by_handle(connection, ETB_DATETIME);
     }
     
-    public void setetbDateTime(int value) {
-        byte[] i = new byte[1];
-        i[0] = (byte)(value & 0xFF);
+    public void setetbDateTime(String value) {
+        byte[] i = value.getBytes();
         bgapi.send_attclient_write_command(connection, ETB_DATETIME, i);
     }
     
@@ -297,9 +296,8 @@ public class Etriage extends BGAPIDefaultListener implements TimeSynchronizable 
         bgapi.send_attclient_read_by_handle(connection, ETB_POSITION);
     }
     
-    public void setetbPosition(int value) {
-        byte[] i = new byte[1];
-        i[0] = (byte)(value & 0xFF);
+    public void setetbPosition(String value) {
+        byte[] i = value.getBytes();
         bgapi.send_attclient_write_command(connection, ETB_POSITION, i);
     }
     
@@ -345,9 +343,8 @@ public class Etriage extends BGAPIDefaultListener implements TimeSynchronizable 
         bgapi.send_attclient_read_by_handle(connection, ETB_LOCATION_ID);
     }
     
-    public void setetbLocationId(int value) {
-        byte[] i = new byte[1];
-        i[0] = (byte)(value & 0xFF);
+    public void setetbLocationId(String value) {
+        byte[] i = value.getBytes();
         bgapi.send_attclient_write_command(connection, ETB_LOCATION_ID, i);
     }
     
@@ -362,14 +359,15 @@ public class Etriage extends BGAPIDefaultListener implements TimeSynchronizable 
     }
     
     public void setetbConnectionInterval(int value) {
-        byte[] i = new byte[1];
+        byte[] i = new byte[2];
         i[0] = (byte)(value & 0xFF);
+        i[1] = (byte)(value>>8 & 0xFF);
         bgapi.send_attclient_write_command(connection, ETB_CONNECTION_INTERVAL, i);
     }
     
     private synchronized void etbConnectionInterval(byte[] value) {
         for (EtriageListener l : listeners) {
-            l.etbConnectionInterval((value[0]));
+            l.etbConnectionInterval((value[1]<<8) + (value[0] & 0xFF));
         }
     }
 
