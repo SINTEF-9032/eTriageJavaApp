@@ -139,6 +139,7 @@ public class EtriageFrame extends javax.swing.JFrame implements EtriageListener 
         jCheckBoxSubscribeTemp = new javax.swing.JCheckBox();
         jCheckBoxSubscribeBatt = new javax.swing.JCheckBox();
         jCheckBoxBWTest = new javax.swing.JCheckBox();
+        jButtonConsole = new javax.swing.JButton();
         jPanel19 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jTextFieldIntervalTemp = new javax.swing.JTextField();
@@ -363,6 +364,15 @@ public class EtriageFrame extends javax.swing.JFrame implements EtriageListener 
             }
         });
 
+        jButtonConsole.setText("Console");
+        jButtonConsole.setMaximumSize(new java.awt.Dimension(57, 33));
+        jButtonConsole.setMinimumSize(new java.awt.Dimension(57, 33));
+        jButtonConsole.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonConsoleActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
         jPanel18.setLayout(jPanel18Layout);
         jPanel18Layout.setHorizontalGroup(
@@ -373,6 +383,10 @@ public class EtriageFrame extends javax.swing.JFrame implements EtriageListener 
                     .addComponent(jCheckBoxSubscribeBatt)
                     .addComponent(jCheckBoxBWTest))
                 .addGap(0, 8, Short.MAX_VALUE))
+            .addGroup(jPanel18Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jButtonConsole, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel18Layout.setVerticalGroup(
             jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -382,7 +396,9 @@ public class EtriageFrame extends javax.swing.JFrame implements EtriageListener 
                 .addComponent(jCheckBoxSubscribeBatt)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jCheckBoxBWTest)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(172, 172, 172)
+                .addComponent(jButtonConsole, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jPanel19.setBorder(javax.swing.BorderFactory.createTitledBorder("Parameters"));
@@ -956,6 +972,15 @@ public class EtriageFrame extends javax.swing.JFrame implements EtriageListener 
     private void jButtonWriteConnectionIntervalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonWriteConnectionIntervalActionPerformed
         if (etb != null) etb.setetbConnectionInterval(Integer.parseInt(jTextFieldConnectionInterval.getText()));
     }//GEN-LAST:event_jButtonWriteConnectionIntervalActionPerformed
+
+    private void jButtonConsoleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsoleActionPerformed
+        if (etb != null) {
+            ConsoleFrame form = new ConsoleFrame(etb, 50000, 1000);
+            form.setSize(600, 750);
+            form.setLocationRelativeTo(this);
+            form.setVisible(true);
+        }
+    }//GEN-LAST:event_jButtonConsoleActionPerformed
     
     /**
      * @param args the command line arguments
@@ -981,6 +1006,7 @@ public class EtriageFrame extends javax.swing.JFrame implements EtriageListener 
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonConnection;
+    private javax.swing.JButton jButtonConsole;
     private javax.swing.JButton jButtonEtbReadLocationID;
     private javax.swing.JButton jButtonEtbWriteLocationID;
     private javax.swing.JButton jButtonGraphTemp;

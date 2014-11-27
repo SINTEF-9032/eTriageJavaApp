@@ -451,5 +451,9 @@ public class Etriage extends BGAPIDefaultListener implements TimeSynchronizable 
         result.append("]");
         return result.toString();        
     }
-    
+
+    public void sendBtConStart()
+    {
+        // To be implemented later... 
+    }
 }
