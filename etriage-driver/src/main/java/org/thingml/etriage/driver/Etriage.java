@@ -386,6 +386,20 @@ public class Etriage extends BGAPIDefaultListener implements TimeSynchronizable 
             l.etbConsole(new String(value));
         }
     }
+    
+    public void subscribeEtbConsole() {
+        bgapi.send_attclient_write_command(connection, ETB_CONSOLE, new byte[]{0x01, 0x00});
+    }
+    
+    public void unsubscribeEtbConsole() {
+        bgapi.send_attclient_write_command(connection, ETB_CONSOLE, new byte[]{0x00, 0x00});
+    }
+    
+    public void sendBtConStart()
+    {
+        subscribeEtbConsole();
+    }
+
     /**************************************************************
      * Receive attribute values
      **************************************************************/ 
@@ -452,8 +466,4 @@ public class Etriage extends BGAPIDefaultListener implements TimeSynchronizable 
         return result.toString();        
     }
 
-    public void sendBtConStart()
-    {
-        // To be implemented later... 
-    }
 }
