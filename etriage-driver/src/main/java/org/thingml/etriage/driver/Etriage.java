@@ -276,6 +276,7 @@ public class Etriage extends BGAPIDefaultListener implements TimeSynchronizable 
     public static final int ETB_LOCATION_ID = 0x38;
     public static final int ETB_CONNECTION_INTERVAL = 0x3F;
     public static final int ETB_CONSOLE = 0x3B;
+    public static final int ETB_CONSOLE_CONFIG = 0x3D;
 
     public void readetbDateTime() {
         bgapi.send_attclient_read_by_handle(connection, ETB_DATETIME);
@@ -388,11 +389,11 @@ public class Etriage extends BGAPIDefaultListener implements TimeSynchronizable 
     }
     
     public void subscribeEtbConsole() {
-        bgapi.send_attclient_write_command(connection, ETB_CONSOLE, new byte[]{0x01, 0x00});
+        bgapi.send_attclient_write_command(connection, ETB_CONSOLE_CONFIG, new byte[]{0x01, 0x00});
     }
     
     public void unsubscribeEtbConsole() {
-        bgapi.send_attclient_write_command(connection, ETB_CONSOLE, new byte[]{0x00, 0x00});
+        bgapi.send_attclient_write_command(connection, ETB_CONSOLE_CONFIG, new byte[]{0x00, 0x00});
     }
     
     public void sendBtConStart()
