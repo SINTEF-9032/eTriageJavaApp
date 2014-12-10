@@ -255,7 +255,7 @@ private void windowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_win
 
     @Override
     public void etbConsole(String value) {
-        for ( int i = 0; i < 20 ; i++ ) {
+        for ( int i = 0; i < value.length() ; i++ ) {
             int nextByte = value.charAt(i);
             if (nextByte != 0) {
                 btPutChar(nextByte);
