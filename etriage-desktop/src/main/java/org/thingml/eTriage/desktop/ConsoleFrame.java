@@ -113,7 +113,7 @@ public class ConsoleFrame extends javax.swing.JFrame implements EtriageListener 
         jTextArea1 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("d-LIVER Console");
+        setTitle("eTriage Console");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 ConsoleFrame.this.windowClosed(evt);
@@ -255,8 +255,12 @@ private void windowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_win
 
     @Override
     public void etbConsole(String value) {
-        int firstByte = value.charAt(0);
-        btPutChar(firstByte);
+        for ( int i = 0; i < 20 ; i++ ) {
+            int nextByte = value.charAt(i);
+            if (nextByte != 0) {
+                btPutChar(nextByte);
+            }
+        }
     }
 
     public void btPutChar(int value) {

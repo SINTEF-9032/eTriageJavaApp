@@ -382,6 +382,7 @@ public class Etriage extends BGAPIDefaultListener implements TimeSynchronizable 
         bgapi.send_attclient_write_command(connection, ETB_CONSOLE, i);
     }
     
+    // Receive string from console
     private synchronized void etbConsole(byte[] value) {
         for (EtriageListener l : listeners) {
             l.etbConsole(new String(value));
