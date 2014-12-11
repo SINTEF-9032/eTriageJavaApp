@@ -140,6 +140,7 @@ public class EtriageFrame extends javax.swing.JFrame implements EtriageListener 
         jCheckBoxSubscribeBatt = new javax.swing.JCheckBox();
         jCheckBoxBWTest = new javax.swing.JCheckBox();
         jButtonConsole = new javax.swing.JButton();
+        jButtonConsoleTcp = new javax.swing.JButton();
         jPanel19 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jTextFieldIntervalTemp = new javax.swing.JTextField();
@@ -373,6 +374,15 @@ public class EtriageFrame extends javax.swing.JFrame implements EtriageListener 
             }
         });
 
+        jButtonConsoleTcp.setText("Console TCP");
+        jButtonConsoleTcp.setMaximumSize(new java.awt.Dimension(57, 33));
+        jButtonConsoleTcp.setMinimumSize(new java.awt.Dimension(57, 33));
+        jButtonConsoleTcp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonConsoleTcpActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
         jPanel18.setLayout(jPanel18Layout);
         jPanel18Layout.setHorizontalGroup(
@@ -385,7 +395,9 @@ public class EtriageFrame extends javax.swing.JFrame implements EtriageListener 
                 .addGap(0, 8, Short.MAX_VALUE))
             .addGroup(jPanel18Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addComponent(jButtonConsole, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButtonConsoleTcp, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonConsole, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel18Layout.setVerticalGroup(
@@ -396,7 +408,9 @@ public class EtriageFrame extends javax.swing.JFrame implements EtriageListener 
                 .addComponent(jCheckBoxSubscribeBatt)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jCheckBoxBWTest)
-                .addGap(172, 172, 172)
+                .addGap(128, 128, 128)
+                .addComponent(jButtonConsoleTcp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonConsole, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -981,6 +995,15 @@ public class EtriageFrame extends javax.swing.JFrame implements EtriageListener 
             form.setVisible(true);
         }
     }//GEN-LAST:event_jButtonConsoleActionPerformed
+
+    private void jButtonConsoleTcpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsoleTcpActionPerformed
+        if (etb != null) {
+            ConsoleTcp form = new ConsoleTcp(etb, 30000);
+            form.setSize(600, 750);
+            form.setLocationRelativeTo(this);
+            form.setVisible(true);
+        }
+    }//GEN-LAST:event_jButtonConsoleTcpActionPerformed
     
     /**
      * @param args the command line arguments
@@ -1007,6 +1030,7 @@ public class EtriageFrame extends javax.swing.JFrame implements EtriageListener 
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonConnection;
     private javax.swing.JButton jButtonConsole;
+    private javax.swing.JButton jButtonConsoleTcp;
     private javax.swing.JButton jButtonEtbReadLocationID;
     private javax.swing.JButton jButtonEtbWriteLocationID;
     private javax.swing.JButton jButtonGraphTemp;
