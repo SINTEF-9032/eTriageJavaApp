@@ -41,7 +41,7 @@ public class ConsoleFrame extends javax.swing.JFrame implements EtriageListener 
     int reduceSize = 10;
     int bytesInBuffer = 0;
     DefaultCaret caret; 
-    protected Etriage etb;
+    protected Etriage etb = null;
     
     /** Creates new form SkinTempGraphFrame
      * @param b */
@@ -86,7 +86,7 @@ public class ConsoleFrame extends javax.swing.JFrame implements EtriageListener 
                   //modifier key.
                   char ch = e.getKeyChar();
                   if (ch == 0x0a) {
-                      etb.setetbConsole(0x0d);
+                      if ( etb != null) etb.setetbConsole(0x0d);
                       jTextArea1.setCaretPosition(jTextArea1.getDocument().getLength());
                       System.out.println("Got CR ... reset caret to end of doc");
                   }
@@ -94,12 +94,21 @@ public class ConsoleFrame extends javax.swing.JFrame implements EtriageListener 
                       jTextArea1.setCaretPosition(jTextArea1.getDocument().getLength());
                       System.out.println("Got BS ... reset caret to end of doc");
                   }
-                  etb.setetbConsole(ch);
+                  if (etb != null) etb.setetbConsole(ch);
                   e.consume();
               }
         });
     }
 
+    public void updateEtb(Etriage b) {
+        if (etb != null) etb.removeEtbListener(this);
+        if(b != null) {
+            b.addEtbListener(this);
+            b.sendBtConStart();
+        }
+        etb = b;
+    }
+    
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is

@@ -39,13 +39,15 @@ import org.thingml.rtcharts.swing.GraphBuffer;
  *
  * @author ffl
  */
-public class EtriageFrame extends javax.swing.JFrame implements EtriageListener {
+public class EtriageFrame extends javax.swing.JFrame implements EtriageListener, ConsoleTcpInterface {
 
     private SimpleDateFormat timestampFormat = new SimpleDateFormat("HH:mm:ss.SSS");
     private DecimalFormat numFormat = new DecimalFormat("0.00");
     private DecimalFormat imunumFormat = new DecimalFormat("0.00000");
     protected BLEExplorerDialog bledialog = new BLEExplorerDialog();
     protected BitRateCounter bitrate;
+    protected ConsoleTcp    tcpConsole = null;
+    protected ConsoleFrame  frameConsole = null;
     
     protected Etriage etb;
     
@@ -55,6 +57,7 @@ public class EtriageFrame extends javax.swing.JFrame implements EtriageListener 
     public EtriageFrame() {
         initComponents();
         reset();
+        tcpConsole = new ConsoleTcp(Integer.parseInt(jTextFieldTcpPort.getText()), this);
         bledialog.setModal(true);
     }
     
@@ -140,7 +143,9 @@ public class EtriageFrame extends javax.swing.JFrame implements EtriageListener 
         jCheckBoxSubscribeBatt = new javax.swing.JCheckBox();
         jCheckBoxBWTest = new javax.swing.JCheckBox();
         jButtonConsole = new javax.swing.JButton();
-        jButtonConsoleTcp = new javax.swing.JButton();
+        jTextFieldTcpPort = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jTextFieldTcpState = new javax.swing.JTextField();
         jPanel19 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jTextFieldIntervalTemp = new javax.swing.JTextField();
@@ -374,14 +379,16 @@ public class EtriageFrame extends javax.swing.JFrame implements EtriageListener 
             }
         });
 
-        jButtonConsoleTcp.setText("Console TCP");
-        jButtonConsoleTcp.setMaximumSize(new java.awt.Dimension(57, 33));
-        jButtonConsoleTcp.setMinimumSize(new java.awt.Dimension(57, 33));
-        jButtonConsoleTcp.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldTcpPort.setText("30000");
+        jTextFieldTcpPort.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonConsoleTcpActionPerformed(evt);
+                jTextFieldTcpPortActionPerformed(evt);
             }
         });
+
+        jLabel1.setText("Port");
+
+        jTextFieldTcpState.setText("-");
 
         javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
         jPanel18.setLayout(jPanel18Layout);
@@ -392,13 +399,22 @@ public class EtriageFrame extends javax.swing.JFrame implements EtriageListener 
                     .addComponent(jCheckBoxSubscribeTemp)
                     .addComponent(jCheckBoxSubscribeBatt)
                     .addComponent(jCheckBoxBWTest))
-                .addGap(0, 8, Short.MAX_VALUE))
-            .addGroup(jPanel18Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButtonConsoleTcp, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonConsole, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel18Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel18Layout.createSequentialGroup()
+                        .addComponent(jButtonConsole, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel18Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTextFieldTcpPort, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel18Layout.createSequentialGroup()
+                        .addComponent(jTextFieldTcpState)
+                        .addContainerGap())))
         );
         jPanel18Layout.setVerticalGroup(
             jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -408,9 +424,13 @@ public class EtriageFrame extends javax.swing.JFrame implements EtriageListener 
                 .addComponent(jCheckBoxSubscribeBatt)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jCheckBoxBWTest)
-                .addGap(128, 128, 128)
-                .addComponent(jButtonConsoleTcp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(74, 74, 74)
+                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldTcpPort, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextFieldTcpState, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(52, 52, 52)
                 .addComponent(jButtonConsole, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -799,6 +819,10 @@ public class EtriageFrame extends javax.swing.JFrame implements EtriageListener 
             etb = new Etriage(bledialog.getBgapi(), bledialog.getConnection());
             etb.addEtbListener(this);
             etb.subscribeBattery();
+            etb.sendBtConStart();
+            if (frameConsole != null) {
+                frameConsole.updateEtb(etb);
+            }
             
             if (bitrate != null) bitrate.request_stop();
             bitrate = new BitRateCounter();
@@ -989,21 +1013,17 @@ public class EtriageFrame extends javax.swing.JFrame implements EtriageListener 
 
     private void jButtonConsoleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsoleActionPerformed
         if (etb != null) {
-            ConsoleFrame form = new ConsoleFrame(etb, 50000, 1000);
-            form.setSize(600, 750);
-            form.setLocationRelativeTo(this);
-            form.setVisible(true);
+            frameConsole = new ConsoleFrame(etb, 50000, 1000);
+            frameConsole.setSize(600, 750);
+            frameConsole.setLocationRelativeTo(this);
+            frameConsole.setVisible(true);
         }
     }//GEN-LAST:event_jButtonConsoleActionPerformed
 
-    private void jButtonConsoleTcpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsoleTcpActionPerformed
-        if (etb != null) {
-            ConsoleTcp form = new ConsoleTcp(etb, 30000);
-            form.setSize(600, 750);
-            form.setLocationRelativeTo(this);
-            form.setVisible(true);
-        }
-    }//GEN-LAST:event_jButtonConsoleTcpActionPerformed
+    private void jTextFieldTcpPortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldTcpPortActionPerformed
+        System.out.println("New port txt :" + jTextFieldTcpPort.getText());
+        tcpConsole.SetTcpPort(Integer.parseInt(jTextFieldTcpPort.getText()));
+    }//GEN-LAST:event_jTextFieldTcpPortActionPerformed
     
     /**
      * @param args the command line arguments
@@ -1030,7 +1050,6 @@ public class EtriageFrame extends javax.swing.JFrame implements EtriageListener 
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonConnection;
     private javax.swing.JButton jButtonConsole;
-    private javax.swing.JButton jButtonConsoleTcp;
     private javax.swing.JButton jButtonEtbReadLocationID;
     private javax.swing.JButton jButtonEtbWriteLocationID;
     private javax.swing.JButton jButtonGraphTemp;
@@ -1051,6 +1070,7 @@ public class EtriageFrame extends javax.swing.JFrame implements EtriageListener 
     private javax.swing.JCheckBox jCheckBoxBWTest;
     private javax.swing.JCheckBox jCheckBoxSubscribeBatt;
     private javax.swing.JCheckBox jCheckBoxSubscribeTemp;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
@@ -1083,6 +1103,8 @@ public class EtriageFrame extends javax.swing.JFrame implements EtriageListener 
     private javax.swing.JTextField jTextFieldInfoModel;
     private javax.swing.JTextField jTextFieldInfoSerial;
     private javax.swing.JTextField jTextFieldIntervalTemp;
+    private javax.swing.JTextField jTextFieldTcpPort;
+    private javax.swing.JTextField jTextFieldTcpState;
     // End of variables declaration//GEN-END:variables
 
     protected GraphBuffer buff_skinTemperature = new GraphBuffer(100);
@@ -1219,7 +1241,28 @@ public class EtriageFrame extends javax.swing.JFrame implements EtriageListener 
     }
 
     public void etbConsole(String value) {
-        // TBD
+        for ( int i = 0; i < value.length() ; i++ ) {
+            char nextByte = (char) value.charAt(i);
+            if (nextByte != 0) {
+                tcpConsole.sendToTcp(nextByte);
+            }
+        }
+    }
+
+    @Override
+    public void statusTxt(String txt) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //System.out.println("Main got statusTxt:" + txt);
+        jTextFieldTcpState.setText(txt);
+    }
+
+    @Override
+    public void rxFromTcp(char ch) {
+        int rxInt = ch;
+        //System.out.println("Main got rx:" + rxInt + " : " + ch); 
+        if (etb != null) {
+            etb.setetbConsole(ch);
+        }
     }
     
     class BitRateCounter extends Thread {
