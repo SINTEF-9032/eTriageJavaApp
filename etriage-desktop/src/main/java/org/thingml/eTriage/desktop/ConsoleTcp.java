@@ -114,7 +114,7 @@ public class ConsoleTcp implements Runnable{
                             //System.out.println("Server received: " + rxArr[0] + " : " + ch); 
                             ifFrame.rxFromTcp(ch); 
                             try {
-                                Thread.sleep(200);
+                                Thread.sleep(100);
                             } catch (InterruptedException ex) {
                                 Logger.getLogger(ConsoleTcp.class.getName()).log(Level.SEVERE, null, ex);
                             }
