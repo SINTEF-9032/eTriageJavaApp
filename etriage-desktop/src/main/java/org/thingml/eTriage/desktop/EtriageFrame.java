@@ -389,6 +389,11 @@ public class EtriageFrame extends javax.swing.JFrame implements EtriageListener,
         jLabel1.setText("Port");
 
         jTextFieldTcpState.setText("-");
+        jTextFieldTcpState.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldTcpStateActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
         jPanel18.setLayout(jPanel18Layout);
@@ -1024,6 +1029,10 @@ public class EtriageFrame extends javax.swing.JFrame implements EtriageListener,
         System.out.println("New port txt :" + jTextFieldTcpPort.getText());
         tcpConsole.SetTcpPort(Integer.parseInt(jTextFieldTcpPort.getText()));
     }//GEN-LAST:event_jTextFieldTcpPortActionPerformed
+
+    private void jTextFieldTcpStateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldTcpStateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldTcpStateActionPerformed
     
     /**
      * @param args the command line arguments
